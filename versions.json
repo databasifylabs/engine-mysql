@@ -1,0 +1,55 @@
+{
+  "registry": "ghcr.io/databasifylabs",
+  "sdk": "0.2.0",
+  "go": {
+    "image": "golang",
+    "tag": "1.27.3-trixie",
+    "digest": "sha256:af1bfc2614ebb1dbd31af514b78740fd678850e76498762b425ecee4c5c6ea80"
+  },
+  "images": {
+    "mysql-8.4": {
+      "engine": "mysql",
+      "line": "8.4",
+      "release": "8.4.13",
+      "base": {
+        "image": "mysql",
+        "tag": "8.4.13",
+        "digest": "sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902"
+      },
+      "packages": {
+        "percona-xtrabackup-84": "8.4.0-7.1.el9",
+        "procps-ng": "3.3.17-14.0.1.el9",
+        "iproute": "6.17.0-2.el9",
+        "jq": "1.6-19.el9_8.2"
+      },
+      "modules": {
+        "rclone": {
+          "module": "github.com/rclone/rclone",
+          "version": "1.76.0"
+        }
+      }
+    },
+    "mysql-9.7": {
+      "engine": "mysql",
+      "line": "9.7",
+      "release": "9.7.4",
+      "base": {
+        "image": "mysql",
+        "tag": "9.7.4",
+        "digest": "sha256:df90258da46f6e7ff8574ff84f17618aba0765cac749928299c69fd4e7cb8ad8"
+      },
+      "packages": {
+        "percona-xtrabackup-97": "9.7.2-2.1.el9",
+        "procps-ng": "3.3.17-14.0.1.el9",
+        "iproute": "6.17.0-2.el9",
+        "jq": "1.6-19.el9_8.2"
+      },
+      "modules": {
+        "rclone": {
+          "module": "github.com/rclone/rclone",
+          "version": "1.76.0"
+        }
+      }
+    }
+  }
+}
