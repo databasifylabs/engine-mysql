@@ -14,5 +14,5 @@ mysqlbinlog --version | grep -F "Ver $DATABASIFY_RELEASE "
 mysqlsh --version
 rclone version | sed -n 1p
 zstd --version
-echo "mysql $DATABASIFY_RELEASE answered through the wrapper"
+echo "mysql $DATABASIFY_RELEASE runs under the databasify supervisor"
 [ "$(id -u mysql)" = 64999 ] && [ "$(id -g mysql)" = 64999 ]
