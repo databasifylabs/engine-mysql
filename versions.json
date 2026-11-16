@@ -3,8 +3,8 @@
   "sdk": "0.2.2",
   "go": {
     "image": "golang",
-    "tag": "1.27.3-trixie",
-    "digest": "sha256:af1bfc2614ebb1dbd31af514b78740fd678850e76498762b425ecee4c5c6ea80"
+    "tag": "1.27.4-trixie",
+    "digest": "sha256:f18c3d73a184fb0582828510722e723b63a93f7188d11dd223d9be6f6880e65d"
   },
   "images": {
     "mysql-8.4": {
