@@ -1,8 +1,2 @@
 *
-!go.mod
-!go.sum
-!cmd/
-!family/
-!engine/
-**/*_test.go
 !images/mysql/repositories.sh

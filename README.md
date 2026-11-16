@@ -4,7 +4,7 @@
 - [Lines](#lines)
 - [Features](#features)
 - [Ports](#ports)
-- [Engine Notes](#engine-notes)
+- [Notes](#notes)
 - [Running Locally](#running-locally)
 - [Adding a Version Line](#adding-a-version-line)
 
@@ -12,9 +12,9 @@
 
 The MySQL engine for [Databasify](https://github.com/databasifylabs/databasify), built on the [engine SDK](https://github.com/databasifylabs/engine-sdk).
 
-Each image is the official `mysql` image plus `databasify`, the engine binary that runs as PID 1 and answers the SDK's typed commands. Images are published as `ghcr.io/databasifylabs/databasify-mysql`.
+Each image is the official `mysql` image plus its tools and `databasify`, the [engine SDK](https://github.com/databasifylabs/engine-sdk) 1.0 runtime that runs as PID 1. Images are published as `ghcr.io/databasifylabs/databasify-mysql`.
 
-The commands and the flows Databasify runs are the same for every engine; see the SDK's [Flows](https://github.com/databasifylabs/engine-sdk#flows).
+Engine behaviour lives in the Databasify app: its PHP driver for this engine runs Bash scripts inside the container through the runtime. This repository changes only when the database or one of its tools moves to a new version.
 
 ## Lines
 
@@ -36,9 +36,7 @@ MySQL 8.4 and 9.7. Each line takes patches of its release only and never leaves 
 | Continuous migration | MySQL Shell and a GTID channel |
 | Fork (one-shot copy) | ✓ |
 | Query insights | statement digests |
-| Log forwarding and host tuning | ✓ |
-
-A command the engine doesn't offer answers `unsupported`; `engine capabilities` lists the ones it does.
+| Host tuning | ✓ |
 
 ## Ports
 
@@ -47,23 +45,22 @@ A command the engine doesn't offer answers `unsupported`; `engine capabilities` 
 | 25060 | `client`, for applications |
 | 33061 | `peers`: group replication |
 
-## Engine Notes
+## Notes
 
-- The code MySQL shares with [engine-mariadb](https://github.com/databasifylabs/engine-mariadb) and [engine-mongodb](https://github.com/databasifylabs/engine-mongodb) lives in [engine-mysql-family](https://github.com/databasifylabs/engine-mysql-family).
 - XtraBackup comes from Percona's apt repository, set up by `images/mysql/repositories.sh`.
 
 ## Running Locally
 
-`$IMAGES` is `tools/images.sh` in a clone of [engine-sdk](https://github.com/databasifylabs/engine-sdk) at the version `go.mod` requires. Run it from this repository's root:
+`$IMAGES` is `tools/images.sh` in a clone of [engine-sdk](https://github.com/databasifylabs/engine-sdk) at the tag the `sdk` pin in `versions.json` names (`v1.0.0`). Run it from this repository's root:
 
 ```bash
-go vet ./... && go test -race -count=1 ./...
+$IMAGES check
 $IMAGES build mysql-9.7 --load --tag smoke:mysql-9.7
 $IMAGES smoke smoke:mysql-9.7 mysql
 ```
 
-The smoke test starts the image, runs `images/mysql/smoke/check.sh` and then the SDK's conformance suite.
+The smoke test starts the image, runs `images/mysql/smoke/check.sh` and then the SDK's runtime conformance suite.
 
 ## Adding a Version Line
 
-Follow `.claude/skills/adding-a-version-line/SKILL.md`. It covers the `versions.json` entry, the code that differs per line in this engine, and the checks to run.
+Follow `.claude/skills/adding-a-version-line/SKILL.md`. It covers the `versions.json` entry, what differs per line, and the checks to run.
