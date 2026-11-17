@@ -3,8 +3,8 @@
   "sdk": "1.0.0",
   "go": {
     "image": "golang",
-    "tag": "1.27.3-trixie",
-    "digest": "sha256:af1bfc2614ebb1dbd31af514b78740fd678850e76498762b425ecee4c5c6ea80"
+    "tag": "1.27.4-trixie",
+    "digest": "sha256:f18c3d73a184fb0582828510722e723b63a93f7188d11dd223d9be6f6880e65d"
   },
   "images": {
     "mysql-8.4": {
@@ -18,8 +18,8 @@
       },
       "packages": {
         "percona-xtrabackup-84": "8.4.0-7.1.el9",
-        "procps-ng": "3.3.17-14.0.1.el9",
-        "iproute": "6.17.0-2.el9",
+        "procps-ng": "3.3.17-15.0.1.el9",
+        "iproute": "6.17.0-3.el9",
         "jq": "1.6-19.el9_8.2"
       },
       "modules": {
@@ -40,8 +40,8 @@
       },
       "packages": {
         "percona-xtrabackup-97": "9.7.2-2.1.el9",
-        "procps-ng": "3.3.17-14.0.1.el9",
-        "iproute": "6.17.0-2.el9",
+        "procps-ng": "3.3.17-15.0.1.el9",
+        "iproute": "6.17.0-3.el9",
         "jq": "1.6-19.el9_8.2"
       },
       "modules": {
